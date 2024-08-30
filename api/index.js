@@ -20,7 +20,7 @@ mongoose
     console.log("Connected to Mongo successfuly");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error connecting to MongoDB", err);
   });
 
 // mongo db seeder routes

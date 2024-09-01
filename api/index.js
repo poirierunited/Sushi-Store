@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const products = require("./data/Product");
 const databaseSeeder = require("./databaseSeeder");
 const userRoute = require("./routes/User");
+const productRoute = require("./routes/Product");
 
 const app = express();
 
@@ -29,9 +30,11 @@ app.use(express.json());
 // mongo db seeder routes
 app.use("/api/seed", databaseSeeder);
 
-// ===== USER ROUTES
-// route for user login
+// user routes
 app.use("/api/users", userRoute);
+
+// products route
+app.use("/api/products", productRoute);
 
 app.listen(PORT || 9000, () => {
   console.log(`App listening in port: ${PORT}`);

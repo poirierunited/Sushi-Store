@@ -1,6 +1,8 @@
 const express = require("express");
 const AsyncHandler = require("express-async-handler");
 const User = require("../models/User");
+const generateToken = require("../tokenGenerate");
+const protect = require("../middleware/Auth");
 const userRoute = express.Router();
 
 userRoute.post(
@@ -14,7 +16,7 @@ userRoute.post(
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        token: null,
+        token: generateToken(user._id),
         createdAt: user.createdAt,
       });
     } else {
@@ -24,7 +26,6 @@ userRoute.post(
   })
 );
 
-//register route
 userRoute.post(
   "/",
   AsyncHandler(async (req, res) => {
@@ -51,6 +52,58 @@ userRoute.post(
       } else {
         res.status(400).json({ message: "Invalid User Data" });
       }
+    }
+  })
+);
+
+//profile data
+userRoute.get(
+  "/profile",
+  protect,
+  AsyncHandler(async (req, res) => {
+    console.log(req.user);
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      res.json({
+        _id: user.id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        createdAt: user.createdAt,
+      });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  })
+);
+
+//update
+userRoute.put(
+  "/profile",
+  protect,
+  AsyncHandler(async (req, res) => {
+    const user = await User.findOne(req.user._id);
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+
+      if (req.body.password) {
+        user.password = req.body.password;
+      }
+
+      const updatedUser = await user.save();
+
+      res.json({
+        _id: user.id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        createdAt: user.createdAt,
+        token: generateToken(updatedUser._id),
+      });
+    } else {
+      res.status(401).json({ message: "User not found" });
     }
   })
 );

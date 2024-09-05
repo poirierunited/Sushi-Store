@@ -1,12 +1,16 @@
-import Products from "./components/Products";
-import Layout from "./Layouts/Layouts";
+import Home from "./pages/Home.jsx";
+import ProductDetail from "./pages/ProductDetail.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Layout>
-        <Products />
-      </Layout>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/detail" element={<ProductDetail />}></Route>
+        </Routes>
+      </Router>
     </>
   );
 }

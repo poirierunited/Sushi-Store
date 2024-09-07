@@ -14,7 +14,7 @@ const Products = () => {
   return (
     <div>
       {loading ? (
-        <h1>loading</h1>
+        <h1>cargando...</h1>
       ) : error ? (
         <h1>{error}</h1>
       ) : (
@@ -47,7 +47,7 @@ const Products = () => {
                                   </Link>
                                 </h3>
                                 <p className="mt-1 text-sm text-gray-500">
-                                  Review Count : {product.numReview}
+                                  Opiniones del combo : {product.numReview}
                                 </p>
                               </div>
                               <p className="text-sm font-medium text-gray-900">

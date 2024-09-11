@@ -12,7 +12,7 @@ const Footer = () => {
                 src="##"
                 className="h-8"
                 // TODO!: AGREGAR LOGO
-                alt="Fukase Sushi Logo"
+                alt="Fukase Logo"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Fukusuke Sushi

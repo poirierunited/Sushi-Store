@@ -18,7 +18,7 @@ export default function Checkout({ open, setOpen }) {
 
   const total = cartItems
     .reduce((total, item) => total + item.qty * item.price, 0)
-    .toFixed(2);
+    .toFixed(0);
 
   return (
     <Dialog

@@ -8,6 +8,10 @@ const Navbar = () => {
   const { userInfo } = userLoginReducer;
   const dispatch = useDispatch();
 
+  const qty = useSelector((state) =>
+    state.cartReducer.cartItems.reduce((total, item) => total + item.qty, 0)
+  );
+
   const logoutHandler = () => {
     dispatch(userLogoutAction());
   };
@@ -16,11 +20,15 @@ const Navbar = () => {
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
-            href="/"
+            to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             {/* TODO!: AGREGAR LOGO */}
-            <img src="#" className="h-8" alt="Fukase Logo" />
+            <img
+              src="https://img.freepik.com/vector-gratis/variedad-logos-sushi_1078-37.jpg"
+              className="h-8"
+              alt="Fukase Logo"
+            />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Fukusuke Sushi
             </span>
@@ -59,7 +67,7 @@ const Navbar = () => {
                     />
                   </svg>
 
-                  {/* <span>{quantity}</span> */}
+                  <span>{qty}</span>
                 </button>
 
                 {/* <Checkout open={open} setOpen={setOpen}></Checkout> */}

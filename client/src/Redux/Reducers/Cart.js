@@ -6,6 +6,7 @@ import {
   SAVE_PAYMENT_METHOD,
 } from "../Constants/Cart";
 
+// control del estado global de Cart
 export const cartReducer = (
   state = { cartItems: [], shippingAddress: {} },
   action

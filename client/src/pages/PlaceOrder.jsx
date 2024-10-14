@@ -111,7 +111,7 @@ export default function PlaceOrder() {
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  Order Summary
+                  Resumen del pedido
                 </h2>
 
                 <p className="leading-relaxed mb-4">
@@ -140,7 +140,7 @@ export default function PlaceOrder() {
 
               <div className="lg:w-1/3 md:w-1/2  p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
                 <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-                  Shipping Address
+                  Dirección de envío
                 </h2>
 
                 <div className="relative mb-4">
@@ -148,7 +148,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Address
+                    Calle y número
                   </label>
                   <input
                     type="text"
@@ -165,7 +165,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    City
+                    Ciudad
                   </label>
                   <input
                     type="text"
@@ -182,7 +182,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Postalcode
+                    Código postal
                   </label>
                   <input
                     type="text"
@@ -199,7 +199,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Country
+                    País
                   </label>
                   <input
                     type="text"
@@ -215,7 +215,7 @@ export default function PlaceOrder() {
                   onClick={saveShippingAddress}
                   className=" mb-10 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
                 >
-                  Save Shipping Address
+                  Guardar dirección de envío para futuras compras
                 </button>
 
                 {clientId && (
@@ -241,6 +241,13 @@ export default function PlaceOrder() {
                     />
                   </PayPalScriptProvider>
                 )}
+
+                {/* <PayPalScriptProvider options={{ clientId: "test" }}>
+                  <PayPalButtons
+                  // createOrder={createOrder}
+                  // onApprove={onApprove}
+                  />
+                </PayPalScriptProvider> */}
               </div>
             </div>
           </div>

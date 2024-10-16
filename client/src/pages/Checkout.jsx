@@ -38,10 +38,10 @@ export default function Checkout({ open, setOpen }) {
               transition
               className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:translate-x-full sm:duration-700"
             >
-              <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+              <div className="bg-yellow-50 flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                   <div className="flex items-start justify-between">
-                    <DialogTitle className="text-lg font-medium text-gray-900">
+                    <DialogTitle className="text-2xl font-medium text-gray-900">
                       Mi Carrito
                     </DialogTitle>
                     <div className="ml-3 flex h-7 items-center">
@@ -70,7 +70,7 @@ export default function Checkout({ open, setOpen }) {
                   <div className="mt-6">
                     <Link
                       to="/placeorder"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      className="flex items-center justify-center rounded-md border border-transparent bg-yellow-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-yellow-700"
                     >
                       Calcular envío
                     </Link>
@@ -81,7 +81,7 @@ export default function Checkout({ open, setOpen }) {
                       <button
                         type="button"
                         onClick={() => setOpen(false)}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-yellow-400 hover:text-yellow-600"
                       >
                         Ver catalogo de productos
                         <span aria-hidden="true"> &rarr;</span>

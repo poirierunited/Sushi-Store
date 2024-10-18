@@ -37,7 +37,7 @@ export default function CartItem({ cartItems }) {
                   </div>
                   <div className="flex flex-1 items-end justify-between text-sm">
                     <p className="text-gray-500">
-                      Qty
+                      Cantidad
                       <select
                         value={product.qty}
                         onChange={(e) =>
@@ -62,7 +62,7 @@ export default function CartItem({ cartItems }) {
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                         onClick={() => removeFromCartHandler(product.product)}
                       >
-                        Remove
+                        Remover
                       </button>
                     </div>
                   </div>

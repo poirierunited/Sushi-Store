@@ -30,7 +30,7 @@ const Navbar = () => {
           >
             {/* TODO!: AGREGAR LOGO */}
             <img
-              src="public\fukusuke-logo.png"
+              src="/fukusuke-logo.png"
               className="w-24 h-24 rounded-full"
               alt="Fukusuke Logo"
             />
@@ -111,7 +111,7 @@ const Navbar = () => {
             <ul className="flex flex-col font-bold p-4 md:p-0 mt-4 rounded-lg bg-white md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-red-600 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <a
-                  href="#"
+                  href="#promotions"
                   className="block py-2 px-5 text-white bg-yellow-100 rounded md:text-black md:bg-yellow-100 md:hover:bg-yellow-400 hover:text-white"
                   aria-current="page"
                 >
@@ -120,7 +120,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#menu"
                   className="block py-2 px-5  bg-yellow-400 md:bg-yellow-100 md:hover:bg-yellow-400 text-white md:text-black rounded hover:text-white"
                 >
                   Carta
@@ -137,7 +137,7 @@ const Navbar = () => {
               </li>*/}
               <li>
                 <a
-                  href="#"
+                  href="#contact-section"
                   className="block py-2 px-5 text-white bg-yellow-400 rounded  md:text-black md:bg-yellow-100 md:hover:bg-yellow-400 hover:text-white"
                 >
                   Contacto

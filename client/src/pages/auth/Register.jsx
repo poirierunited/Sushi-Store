@@ -79,7 +79,7 @@ export default function Register() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="flex items-start mb-5">
+            {/* <div className="flex items-start mb-5">
               <div className="flex items-center h-5">
                 <input
                   id="remember"
@@ -95,7 +95,7 @@ export default function Register() {
               >
                 Recordarme al iniciar sesión
               </label>
-            </div>
+            </div> */}
             <button
               type="submit"
               className="text-black bg-yellow-200 hover:bg-yellow-400 border-2 border-black focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"

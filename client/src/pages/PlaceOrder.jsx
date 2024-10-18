@@ -110,7 +110,7 @@ export default function PlaceOrder() {
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-                <h2 className="bg-red-700 shadow-xl border border-gray-300 p-6 bg-white rounded-lg text-2xl title-font text-white tracking-widest">
+                <h2 className="bg-red-700 shadow-xl border border-gray-300 p-6 rounded-lg text-2xl title-font text-white tracking-widest">
                   Resumen de tu pedido
                 </h2>
 
@@ -199,7 +199,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    country
+                    País
                   </label>
                   <input
                     type="text"

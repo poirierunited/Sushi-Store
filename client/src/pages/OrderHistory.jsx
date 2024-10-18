@@ -18,7 +18,7 @@ export function OrderHistory() {
         {loading ? (
           <Loading></Loading>
         ) : (
-          <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+          <section className="bg-yellow-50 py-8 antialiased dark:bg-gray-900 md:py-16">
             <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
               <div className="mx-auto max-w-5xl">
                 <div className="gap-4 sm:flex sm:items-center sm:justify-between">
@@ -64,8 +64,12 @@ export function OrderHistory() {
                       >
                         <option selected>Esta semana</option>
                         <option value="this month">Este mes</option>
-                        <option value="last 3 months">Los ultimos 3 meses</option>
-                        <option value="lats 6 months">Los ultimos 6 meses</option>
+                        <option value="last 3 months">
+                          Los ultimos 3 meses
+                        </option>
+                        <option value="lats 6 months">
+                          Los ultimos 6 meses
+                        </option>
                         <option value="this year">Este año</option>
                       </select>
                     </div>

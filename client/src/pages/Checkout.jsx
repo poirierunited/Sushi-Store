@@ -65,7 +65,7 @@ export default function Checkout({ open, setOpen }) {
                     <p>{total}$</p>
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">
-                    Envío al aceptar la compra.
+                    Costo de envío al aceptar la compra.
                   </p>
                   <div className="mt-6">
                     <Link

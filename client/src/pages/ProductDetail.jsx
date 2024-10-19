@@ -33,11 +33,16 @@ function ProductDetail() {
             <section className="text-gray-600 body-font overflow-hidden">
               <div className="container px-5 py-24 mx-auto bg-yellow-50">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                  <img
-                    alt="ecommerce"
-                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                    src={product.image}
-                  />
+                <div className="lg:w-1/4 w-full">
+                <div className="aspect-h-2 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
+                  
+                    <img
+                      alt="ecommerce"
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      src={product.image}
+                    />
+                  </div>
+                  </div>
                   <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2 className="text-sm title-font text-gray-500 tracking-widest">
                       Precio: {product.price}$

@@ -20,7 +20,7 @@ export default function CartItem({ cartItems }) {
               <li key={product.id} className="flex py-6">
                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img
-                    alt={product.imageAlt}
+                    alt={product.name}
                     src={product.image}
                     className="h-full w-full object-cover object-center"
                   />

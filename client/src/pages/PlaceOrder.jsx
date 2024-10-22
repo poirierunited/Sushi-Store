@@ -110,8 +110,8 @@ export default function PlaceOrder() {
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-                <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  Order Summary
+                <h2 className="bg-red-700 shadow-xl border border-gray-300 p-6 rounded-lg text-2xl title-font text-white tracking-widest">
+                  Resumen de tu pedido
                 </h2>
 
                 <p className="leading-relaxed mb-4">
@@ -122,11 +122,11 @@ export default function PlaceOrder() {
                   <span className="ml-auto text-gray-900">${subtotal}</span>
                 </div>
                 <div className="flex border-t border-gray-200 py-2">
-                  <span className="text-gray-500">Tax</span>
+                  <span className="text-gray-500">Impuesto</span>
                   <span className="ml-auto text-gray-900">${0}</span>
                 </div>
                 <div className="flex border-t border-b mb-6 border-gray-200 py-2">
-                  <span className="text-gray-500">Shipping Price</span>
+                  <span className="text-gray-500">Precio de envío</span>
                   <span className="ml-auto text-gray-900">
                     ${shippingPrice}
                   </span>
@@ -140,7 +140,7 @@ export default function PlaceOrder() {
 
               <div className="lg:w-1/3 md:w-1/2  p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
                 <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-                  Shipping Address
+                  Dirección de envío
                 </h2>
 
                 <div className="relative mb-4">
@@ -148,7 +148,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Address
+                    Calle
                   </label>
                   <input
                     type="text"
@@ -165,7 +165,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    City
+                    Ciudad
                   </label>
                   <input
                     type="text"
@@ -182,7 +182,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Postalcode
+                    Codigo postal
                   </label>
                   <input
                     type="text"
@@ -199,7 +199,7 @@ export default function PlaceOrder() {
                     htmlFor="email"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Country
+                    País
                   </label>
                   <input
                     type="text"
@@ -213,9 +213,9 @@ export default function PlaceOrder() {
 
                 <button
                   onClick={saveShippingAddress}
-                  className=" mb-10 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+                  className=" mb-10 bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 transition duration-200"
                 >
-                  Save Shipping Address
+                  Guardar Dirección
                 </button>
 
                 {clientId && (

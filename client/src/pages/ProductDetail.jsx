@@ -31,7 +31,7 @@ function ProductDetail() {
         ) : (
           <>
             <section className="text-gray-600 body-font overflow-hidden">
-              <div className="container px-5 py-24 mx-auto">
+              <div className="container px-5 py-24 mx-auto bg-yellow-50">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                   <img
                     alt="ecommerce"
@@ -209,14 +209,14 @@ function ProductDetail() {
                       {product.countInStock > 0 ? (
                         <button
                           onClick={addToCartHandler}
-                          className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                          className="flex ml-auto text-white bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-500 rounded"
                         >
                           Agregar al carrito de compras
                         </button>
                       ) : (
                         <>
                           {/* inhabilitar botón */}{" "}
-                          <h1 className="cursor-not-allowed flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                          <h1 className="cursor-not-allowed flex ml-auto text-white bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-500 rounded">
                             Sin stock
                           </h1>
                         </>

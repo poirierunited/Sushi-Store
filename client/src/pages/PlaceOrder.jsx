@@ -122,11 +122,11 @@ export default function PlaceOrder() {
                   <span className="ml-auto text-gray-900">${subtotal}</span>
                 </div>
                 <div className="flex border-t border-gray-200 py-2">
-                  <span className="text-gray-500">Tax</span>
+                  <span className="text-gray-500">Impuesto</span>
                   <span className="ml-auto text-gray-900">${0}</span>
                 </div>
                 <div className="flex border-t border-b mb-6 border-gray-200 py-2">
-                  <span className="text-gray-500">Shipping Price</span>
+                  <span className="text-gray-500">Precio de envío</span>
                   <span className="ml-auto text-gray-900">
                     ${shippingPrice}
                   </span>
@@ -213,9 +213,9 @@ export default function PlaceOrder() {
 
                 <button
                   onClick={saveShippingAddress}
-                  className=" mb-10 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+                  className=" mb-10 bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 transition duration-200"
                 >
-                  Guardar dirección de envío para futuras compras
+                  Guardar Dirección
                 </button>
 
                 {clientId && (

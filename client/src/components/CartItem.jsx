@@ -20,7 +20,7 @@ export default function CartItem({ cartItems }) {
               <li key={product.id} className="flex py-6">
                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img
-                    alt={product.imageAlt}
+                    alt={product.name}
                     src={product.image}
                     className="h-full w-full object-cover object-center"
                   />
@@ -37,7 +37,7 @@ export default function CartItem({ cartItems }) {
                   </div>
                   <div className="flex flex-1 items-end justify-between text-sm">
                     <p className="text-gray-500">
-                      Qty
+                      Cantidad
                       <select
                         value={product.qty}
                         onChange={(e) =>
@@ -62,7 +62,7 @@ export default function CartItem({ cartItems }) {
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                         onClick={() => removeFromCartHandler(product.product)}
                       >
-                        Remove
+                        Remover
                       </button>
                     </div>
                   </div>

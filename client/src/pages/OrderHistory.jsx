@@ -18,12 +18,12 @@ export function OrderHistory() {
         {loading ? (
           <Loading></Loading>
         ) : (
-          <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+          <section className="bg-yellow-50 py-8 antialiased dark:bg-gray-900 md:py-16">
             <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
               <div className="mx-auto max-w-5xl">
                 <div className="gap-4 sm:flex sm:items-center sm:justify-between">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
-                    My orders
+                    Mis pedidos
                   </h2>
 
                   <div className="mt-6 gap-4 space-y-4 sm:mt-0 sm:flex sm:items-center sm:justify-end sm:space-y-0">
@@ -38,17 +38,17 @@ export function OrderHistory() {
                         id="order-type"
                         className="block w-full min-w-[8rem] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                       >
-                        <option selected>All orders</option>
-                        <option value="pre-order">Pre-order</option>
-                        <option value="transit">In transit</option>
-                        <option value="confirmed">Confirmed</option>
-                        <option value="cancelled">Cancelled</option>
+                        <option selected>Todos los pedidos</option>
+                        <option value="pre-order">Pre-ordenados</option>
+                        <option value="transit">En camino</option>
+                        <option value="confirmed">Confirmados</option>
+                        <option value="cancelled">Cancelados</option>
                       </select>
                     </div>
 
                     <span className="inline-block text-gray-500 dark:text-gray-400">
                       {" "}
-                      from{" "}
+                      de{" "}
                     </span>
 
                     <div>
@@ -62,11 +62,15 @@ export function OrderHistory() {
                         id="duration"
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                       >
-                        <option selected>this week</option>
-                        <option value="this month">this month</option>
-                        <option value="last 3 months">the last 3 months</option>
-                        <option value="lats 6 months">the last 6 months</option>
-                        <option value="this year">this year</option>
+                        <option selected>Esta semana</option>
+                        <option value="this month">Este mes</option>
+                        <option value="last 3 months">
+                          Los ultimos 3 meses
+                        </option>
+                        <option value="lats 6 months">
+                          Los ultimos 6 meses
+                        </option>
+                        <option value="this year">Este año</option>
                       </select>
                     </div>
                   </div>
@@ -82,7 +86,7 @@ export function OrderHistory() {
                         >
                           <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                             <dt className="text-base font-medium text-gray-500 dark:text-gray-400">
-                              Order ID:
+                              ID del pedido:
                             </dt>
                             <dd className="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">
                               <a href="#" className="hover:underline">
@@ -93,7 +97,7 @@ export function OrderHistory() {
 
                           <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1 ml-10">
                             <dt className="text-base font-medium text-gray-500 dark:text-gray-400 ">
-                              Date:
+                              Fecha:
                             </dt>
                             <dd className="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">
                               {moment(order.createdAt).format("MMM Do YY")}
@@ -102,7 +106,7 @@ export function OrderHistory() {
 
                           <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                             <dt className="text-base font-medium text-gray-500 dark:text-gray-400">
-                              Price:
+                              Precio:
                             </dt>
                             <dd className="mt-1.5 text-base font-semibold text-gray-900 dark:text-white">
                               ${order.totalPrice}
@@ -111,7 +115,7 @@ export function OrderHistory() {
 
                           <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
                             <dt className="text-base font-medium text-gray-500 dark:text-gray-400">
-                              Status:
+                              Estado:
                             </dt>
                             <dd
                               className={
@@ -146,7 +150,7 @@ export function OrderHistory() {
                               type="button"
                               className="w-full rounded-lg bg-primary-700 px-3 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:w-auto"
                             >
-                              Order again
+                              Pedir otra vez
                             </button>
                             {/* <a
                             href="#"

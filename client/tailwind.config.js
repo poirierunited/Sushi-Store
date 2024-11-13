@@ -1,4 +1,5 @@
 import flowbitePlugin from "flowbite/plugin";
+import flowbiteAspectRatio from "@tailwindcss/aspect-ratio";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,5 +10,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [flowbitePlugin],
+  plugins: [flowbitePlugin, flowbiteAspectRatio],
 };

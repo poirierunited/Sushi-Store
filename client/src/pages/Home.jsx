@@ -17,8 +17,6 @@ const Home = () => {
           Carta
         </h1>
       </div>
-
-
     </Layout>
   );
 };

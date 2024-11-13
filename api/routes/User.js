@@ -29,14 +29,34 @@ userRoute.post(
 userRoute.post(
   "/",
   AsyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const {
+      run,
+      name,
+      lastname,
+      region,
+      city,
+      address,
+      birthday,
+      gender,
+      phoneNumber,
+      email,
+      password,
+    } = req.body;
     const userExists = await User.findOne({ email });
     if (userExists) {
       res.status(400).json({ message: "Email already registered" });
       return;
     } else {
       const user = await User.create({
+        run: run,
         name: name,
+        lastname: lastname,
+        region: region,
+        city: city,
+        address: address,
+        birthday: birthday,
+        gender: gender,
+        phoneNumber: phoneNumber,
         email: email,
         password: password,
       });

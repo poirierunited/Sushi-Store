@@ -45,7 +45,20 @@ export const userLogoutAction = () => async (dispatch) => {
 
 // user register action
 export const userRegisterAction =
-  (name, email, password) => async (dispatch) => {
+  (
+    run,
+    name,
+    lastname,
+    region,
+    city,
+    address,
+    birthday,
+    gender,
+    phoneNumber,
+    email,
+    password
+  ) =>
+  async (dispatch) => {
     try {
       dispatch({ type: USER_REGISTER_REQ });
       const config = {
@@ -56,7 +69,19 @@ export const userRegisterAction =
 
       const { data } = await axios.post(
         `${BASE_URL}/api/users`,
-        { name, email, password },
+        {
+          run,
+          name,
+          lastname,
+          region,
+          city,
+          address,
+          birthday,
+          gender,
+          phoneNumber,
+          email,
+          password,
+        },
         config
       );
 

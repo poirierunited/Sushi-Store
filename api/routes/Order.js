@@ -41,6 +41,23 @@ orderRoute.post(
   })
 );
 
+// get order
+orderRoute.get(
+  "/:id",
+  protect,
+  AsyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id).populate(
+      "user",
+      "name email"
+    );
+    if (order) {
+      res.status(200).json(order);
+    } else {
+      res.status(404).json({ message: "Order not found" });
+    }
+  })
+);
+
 // pay order
 orderRoute.put(
   "/:id/payment",
@@ -73,23 +90,6 @@ orderRoute.get(
     const orders = await Order.find({ user: req.user._id }).sort({ _id: -1 });
     if (orders) {
       res.status(200).json(orders);
-    } else {
-      res.status(404).json({ message: "Order not found" });
-    }
-  })
-);
-
-// get order
-orderRoute.get(
-  "/:id",
-  protect,
-  AsyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params.id).populate(
-      "user",
-      "name email"
-    );
-    if (order) {
-      res.status(200).json(order);
     } else {
       res.status(404).json({ message: "Order not found" });
     }

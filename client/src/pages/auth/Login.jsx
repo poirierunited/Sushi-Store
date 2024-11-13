@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "../../Layouts/Layouts";
 import { useDispatch, useSelector } from "react-redux";
-import { userLoginAction } from "../../Redux/Actions/User";
+import { userLoginAction, userLogoutAction } from "../../Redux/Actions/User";
 
 export default function Login() {
   const [email, setEmail] = useState(null);
@@ -15,12 +15,26 @@ export default function Login() {
     e.preventDefault();
     dispatch(userLoginAction(email, password));
   };
+
+  const retryLogin = () => {
+    dispatch(userLogoutAction());
+  };
+
   return (
     <Layout>
       {loading ? (
         <h1>cargando...</h1>
       ) : error ? (
-        <h1>{error}</h1>
+        <>
+          <h1>{error}</h1>
+
+          <button
+            onClick={retryLogin}
+            className="mt-4 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          >
+            Reintentar
+          </button>
+        </>
       ) : (
         <>
           <form className="max-w-sm mx-auto mt-10 py-10" onSubmit={submitHandler}>

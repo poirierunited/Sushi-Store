@@ -8,7 +8,9 @@ const Home = () => {
   const { userInfo } = userLoginReducer;
   return (
     <Layout>
-      {!userInfo.isAdmin ? (
+      {userInfo && !userInfo.isAdmin ? (
+        <Table userInfo={userInfo} />
+      ) : (
         <>
           <div className="block bg-[url('/Fondo-promociones.jpeg')] h-64 w-full">
             <h1 className="block py-20 text-Black text-center text-7xl font-bold">
@@ -24,8 +26,6 @@ const Home = () => {
             </h1>
           </div>
         </>
-      ) : (
-        <Table userInfo={userInfo} />
       )}
     </Layout>
   );

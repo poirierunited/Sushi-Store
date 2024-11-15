@@ -54,18 +54,18 @@ export default function Table() {
   }
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-4 item-center justify-center p-10">
       <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
+          <thead className="text-xs text-black uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r border-black">
                 Nombre del producto
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r border-black">
                 Cantidad
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 border-r border-black">
                 Precio c/u
               </th>
               <th scope="col" className="px-6 py-3">
@@ -82,13 +82,13 @@ export default function Table() {
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-r border-gray-300"
                   >
                     {item.name}
                   </th>
-                  <td className="px-6 py-4">{item.quantity}</td>
-                  <td className="px-6 py-4">{`$${item.price}`}</td>
-                  <td className="px-6 py-4">{`$${
+                  <td className="px-6 py-4 text-black border-r border-gray-300">{item.quantity}</td>
+                  <td className="px-6 py-4 text-black border-r border-gray-300">{`$${item.price}`}</td>
+                  <td className="px-6 py-4 text-black">{`$${
                     // item.quantity * item.price
                     order.totalPrice
                   }`}</td>
@@ -101,9 +101,9 @@ export default function Table() {
 
       <div className="relative overflow-x-auto">
         <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-black uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-4 py-2">
+              <th scope="col" className="px-4 py-2 border-r border-black">
                 Total vendido
               </th>
               <th scope="col" className="px-4 py-2">
@@ -119,15 +119,15 @@ export default function Table() {
                   key={summaryIndex}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  <td className="px-4 py-2">{summary.totalPrice}</td>
-                  <td className="px-4 py-2">{summary.totalOrders}</td>
+                  <td className="px-4 py-2 text-black border-r border-gray-300">{`$${summary.totalPrice}`}</td>
+                  <td className="px-4 py-2 text-black">{summary.totalOrders}</td>
                 </tr>
               ))
             ) : (
               <tr>
                 <td
                   colSpan="2"
-                  className="px-4 py-2 text-center text-gray-500 dark:text-gray-400"
+                  className="px-4 py-2 text-center text-black dark:text-gray-400"
                 >
                   No hay datos disponibles.
                 </td>

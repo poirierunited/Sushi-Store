@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Layout>
       {userInfo && userInfo.isAdmin ? (
-        <Table userInfo={userInfo} />
+      <Table userInfo={userInfo} />
       ) : (
         <>
           <div className="block bg-[url('/Fondo-promociones.jpeg')] h-64 w-full">

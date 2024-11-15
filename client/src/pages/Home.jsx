@@ -8,7 +8,7 @@ const Home = () => {
   const { userInfo } = userLoginReducer;
   return (
     <Layout>
-      {userInfo && !userInfo.isAdmin ? (
+      {userInfo && userInfo.isAdmin ? (
         <Table userInfo={userInfo} />
       ) : (
         <>

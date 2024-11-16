@@ -1,6 +1,6 @@
 const express = require("express");
 const protect = require("../middleware/Auth");
-const admin = require("../middleware/Admin");
+// const admin = require("../middleware/Admin");
 const AsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
 
@@ -9,10 +9,19 @@ const reportRoute = express.Router();
 // Get sales report
 reportRoute.get(
   "/sales",
-//   protect,
-//   admin,
+  protect,
   AsyncHandler(async (req, res) => {
     const { startDate, endDate } = req.query;
+
+    const isAdmin = req.user.isAdmin;
+
+    if (!isAdmin) {
+      console.log(
+        "User is not an admin" + isAdmin + " USERID: " + req.user._id
+      );
+      res.status(403).json({ message: "Not authorized as an admin" });
+      return;
+    }
 
     const match = {};
     if (startDate && endDate) {
@@ -25,10 +34,30 @@ reportRoute.get(
     const salesReport = await Order.aggregate([
       { $match: match },
       {
-        $group: {
-          _id: null,
-          totalSales: { $sum: "$totalPrice" },
-          totalOrders: { $sum: 1 },
+        $facet: {
+          totalSummary: [
+            {
+              $group: {
+                _id: null,
+                totalPrice: { $sum: "$totalPrice" },
+                totalOrders: { $sum: 1 },
+              },
+            },
+          ],
+          allOrders: [
+            {
+              $match: match,
+            },
+            {
+              $project: {
+                "orderItems.name": 1,
+                "orderItems.quantity": 1,
+                "orderItems.price": 1,
+                user: 1,
+                totalPrice: 1,
+              },
+            },
+          ],
         },
       },
     ]);

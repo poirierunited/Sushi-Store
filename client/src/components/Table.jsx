@@ -58,8 +58,9 @@ export default function Table() {
       <h1 className="text-2xl font-bold text-center mb-5">
         Reporte diario: inicio-final
       </h1>
-      <div className="flex space-x-4 item-center justify-center">
-        <div className="relative overflow-x-auto">
+      <div className="flex flex-col md:flex-row space-x-4 items-center justify-center">
+        {/* Tabla de productos */}
+        <div className="relative overflow-x-auto mb-5 md:mb-0 w-full">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
             <thead className="text-xs text-black uppercase bg-[#FCEA69] dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -102,7 +103,8 @@ export default function Table() {
           </table>
         </div>
 
-        <div className="relative overflow-x-auto">
+        {/* Tabla de resumen */}
+        <div className="relative overflow-x-auto w-full">
           <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
             <thead className="text-xs text-black uppercase bg-[#FCEA69] dark:bg-gray-700 dark:text-gray-400">
               <tr>

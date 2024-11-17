@@ -39,9 +39,6 @@ const Navbar = () => {
                 </span>
               </Link>
             </div>
-            <p className="self-center text-3xl font-extrabold whitespace-nowrap text-white dark:text-slate-600 rounded-lg px-4 py-2">
-              BIENVENIDO ADMIN
-            </p>
             <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
               {!userInfo ? (
                 <Link
@@ -52,7 +49,10 @@ const Navbar = () => {
                 </Link>
               ) : (
                 <>
-                  <UserDropdown logoutHandler={logoutHandler}></UserDropdown>
+                  <UserDropdown
+                    logoutHandler={logoutHandler}
+                    isAdmin={true}
+                  ></UserDropdown>
                 </>
               )}
             </div>
@@ -85,7 +85,10 @@ const Navbar = () => {
                 </Link>
               ) : (
                 <>
-                  <UserDropdown logoutHandler={logoutHandler}></UserDropdown>
+                  <UserDropdown
+                    logoutHandler={logoutHandler}
+                    isAdmin={false}
+                  ></UserDropdown>
                   <button
                     data-collapse-toggle="navbar-cta"
                     type="button"

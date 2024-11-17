@@ -2,6 +2,7 @@
 
 import { Dropdown } from "flowbite-react";
 import { Link } from "react-router-dom";
+// eslint-disable-next-line react/prop-types
 export function UserDropdown({ logoutHandler }) {
   return (
     <Dropdown label="Mi cuenta" dismissOnClick={false} color="light">

@@ -57,7 +57,7 @@ export default function Table() {
     <div className="flex space-x-4 item-center justify-center p-10">
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
-          <thead className="text-xs text-black uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-black uppercase bg-[#FCEA69] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3 border-r border-black">
                 Nombre del producto
@@ -86,7 +86,9 @@ export default function Table() {
                   >
                     {item.name}
                   </th>
-                  <td className="px-6 py-4 text-black border-r border-gray-300">{item.quantity}</td>
+                  <td className="px-6 py-4 text-black border-r border-gray-300">
+                    {item.quantity}
+                  </td>
                   <td className="px-6 py-4 text-black border-r border-gray-300">{`$${item.price}`}</td>
                   <td className="px-6 py-4 text-black">{`$${
                     // item.quantity * item.price
@@ -101,7 +103,7 @@ export default function Table() {
 
       <div className="relative overflow-x-auto">
         <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300">
-          <thead className="text-xs text-black uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-black uppercase bg-[#FCEA69] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-2 border-r border-black">
                 Total vendido
@@ -120,7 +122,9 @@ export default function Table() {
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
                   <td className="px-4 py-2 text-black border-r border-gray-300">{`$${summary.totalPrice}`}</td>
-                  <td className="px-4 py-2 text-black">{summary.totalOrders}</td>
+                  <td className="px-4 py-2 text-black">
+                    {summary.totalOrders}
+                  </td>
                 </tr>
               ))
             ) : (

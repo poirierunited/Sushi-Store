@@ -90,6 +90,9 @@ export default function Login() {
             >
               Enviar
             </button>
+            <p className="block text-sm mt-4">
+              Para crear una cuenta pincha <a href="/register" className="text-blue-500 underline hover:text-blue-200">aquí</a>
+            </p>
             </ul>
           </form>
         </>

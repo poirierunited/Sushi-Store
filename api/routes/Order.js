@@ -75,6 +75,10 @@ orderRoute.put(
       };
 
       const updatedOrder = await order.save();
+
+      // Send email to client
+      sendEmailToClient(order.user.email, "Order Paid", "Your order has been paid successfully.");
+
       res.status(200).json(updatedOrder);
     } else {
       res.status(404).json({ message: "Order not found" });

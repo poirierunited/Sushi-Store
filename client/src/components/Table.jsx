@@ -72,13 +72,6 @@ export default function Table() {
   return (
     <div className="p-5">
       <form onSubmit={handleSubmit} className="mb-5 text-center">
-        <h2 className="text-2xl font-bold text-center mb-5">
-          Reporte desde{" "}
-          <span style={{ color: "#C81F1D" }}>{humanizeDate(startDate)}</span>{" "}
-          hasta{" "}
-          <span style={{ color: "#C81F1D" }}>{humanizeDate(endDate)}</span>
-        </h2>
-
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <label>
             Fecha de inicio:
@@ -105,6 +98,15 @@ export default function Table() {
             Actualizar
           </button>
         </div>
+
+        <br />
+
+        <h2 className="text-2xl font-bold text-center mb-5">
+          Reporte desde{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(startDate)}</span>{" "}
+          hasta{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(endDate)}</span>
+        </h2>
       </form>
 
       <div className="flex flex-col md:flex-row space-x-4 items-center justify-center">

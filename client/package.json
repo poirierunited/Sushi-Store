@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
     "flowbite": "^2.5.1",
     "flowbite-react": "^0.10.1",
     "heroicons": "^2.1.5",

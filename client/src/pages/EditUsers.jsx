@@ -9,7 +9,7 @@ export default function EditUser() {
   const { id: paramId } = useParams();
   const navigate = useNavigate();
 
-  const [id, setId] = useState(paramId || ""); // ID desde URL o input manual
+  const [id, setId] = useState(paramId || "");
   const [run, setRun] = useState("");
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -68,7 +68,6 @@ export default function EditUser() {
     setError("");
 
     try {
-      // Realiza la solicitud PUT para actualizar los datos del usuario
       const { data } = await axios.put(
         `${BASE_URL}/api/users/profile/${id}`,
         {
@@ -90,10 +89,8 @@ export default function EditUser() {
         }
       );
 
-      // Extraemos los campos actualizados de la respuesta
       const updatedFields = data.updatedFields;
 
-      // Formateamos los campos cambiados en un formato legible
       const updatedData = Object.entries(updatedFields)
         .map(
           ([key, value]) =>
@@ -101,7 +98,6 @@ export default function EditUser() {
         )
         .join("\n");
 
-      // Mostrar alerta con el mensaje y los campos actualizados
       alert(`${data.message}\n\nCampos actualizados:\n${updatedData}`);
 
       navigate("/");

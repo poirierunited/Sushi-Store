@@ -26,13 +26,10 @@ export default function PlaceOrder() {
     cartItems.reduce((total, item) => total + item.qty * item.price, 0)
   );
 
-  //   opcion de incluir impuestos
-  //   const taxPrice = addDecimal(Number(0.15 * subtotal).toFixed(0));
   const shippingPrice = addDecimal(subtotal > 100 ? 0 : 20);
   //total
   const total = (
     Number(subtotal) +
-    // Number(taxPrice) +
     Number(shippingPrice)
   ).toFixed(0);
 
@@ -241,13 +238,6 @@ export default function PlaceOrder() {
                     />
                   </PayPalScriptProvider>
                 )}
-
-                {/* <PayPalScriptProvider options={{ clientId: "test" }}>
-                  <PayPalButtons
-                  // createOrder={createOrder}
-                  // onApprove={onApprove}
-                  />
-                </PayPalScriptProvider> */}
               </div>
             </div>
           </div>

@@ -4,9 +4,6 @@ import Layout from "../Layouts/Layouts";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { orderDetailAction } from "../Redux/Actions/Order";
-// import { useParams } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { orderDetailAction } from "../Redux/Actions/Order";
 
 const OrderConfirmation = () => {
   const { id } = useParams();
@@ -58,7 +55,6 @@ const OrderConfirmation = () => {
                   <p>
                     <strong>Payer Email:</strong> {order.user.email}
                   </p>
-                  {/* Add more details as needed */}
                 </div>
               )}
             </div>

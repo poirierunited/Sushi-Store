@@ -1,6 +1,5 @@
 const express = require("express");
 const protect = require("../middleware/Auth");
-// const admin = require("../middleware/Admin");
 const AsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
 

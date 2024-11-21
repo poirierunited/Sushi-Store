@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import PlaceOrder from "./pages/PlaceOrder";
 import OrderConfirmation from "./pages/OrderConfirm";
 import { OrderHistory } from "./pages/OrderHistory";
+import EditUser from "./pages/EditUsers";
 
 function App() {
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
@@ -27,6 +28,11 @@ function App() {
             exact
             path="/login"
             element={userInfo ? <Navigate to="/"></Navigate> : <Login />}
+          ></Route>
+          <Route
+            exact
+            path="/edit-user"
+            element={<EditUser></EditUser>}
           ></Route>
           <Route
             exact

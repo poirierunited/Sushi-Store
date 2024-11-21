@@ -124,7 +124,7 @@ userRoute.get(
   })
 );
 
-//update
+//update user by admin
 userRoute.put(
   "/profile/:id",
   protect,
@@ -171,7 +171,7 @@ userRoute.put(
       }
       if (req.body.password) {
         user.password = req.body.password;
-        updatedFields.password = "Updated"; // No retornar contraseñas explícitamente
+        updatedFields.password = "Updated";
       }
 
       await user.save();

@@ -9,14 +9,14 @@ export default function Table() {
   const [data, setData] = useState(null); // Estado para almacenar los datos de la API
   const [loading, setLoading] = useState(false); // Estado para el indicador de carga
   const [error, setError] = useState(null); // Estado para manejar errores
-  const [startDate, setStartDate] = useState("2024-05-01"); // Fecha inicial por defecto
-  const [endDate, setEndDate] = useState("2024-12-01"); // Fecha final por defecto
+  const [startDate, setStartDate] = useState("2024-05-01"); // Fecha inicial
+  const [endDate, setEndDate] = useState("2024-12-01"); // Fecha final
 
   // Obtener el token desde Redux
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
   const { userInfo } = userLoginReducer;
 
-  const fetchData = async (startDate, endDate) => {
+  const fetchData = async () => {
     try {
       setLoading(true); // Activar indicador de carga
       setError(null); // Reiniciar errores previos
@@ -37,19 +37,19 @@ export default function Table() {
     }
   };
 
-  // Llamado inicial con las fechas por defecto
+  // Ejecutar fetchData cuando se monte el componente o cuando cambie el intervalo de fechas
   useEffect(() => {
     if (userInfo?.token) {
-      fetchData(startDate, endDate);
+      fetchData();
     } else {
       setLoading(false);
       setError("No se encontró un token válido.");
     }
-  }, [userInfo]);
+  }, [userInfo, startDate, endDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchData(startDate, endDate); // Actualiza los datos con las fechas seleccionadas
+    fetchData();
   };
 
   if (loading) {
@@ -72,6 +72,13 @@ export default function Table() {
   return (
     <div className="p-5">
       <form onSubmit={handleSubmit} className="mb-5 text-center">
+        <h2 className="text-2xl font-bold text-center mb-5">
+          Reporte desde{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(startDate)}</span>{" "}
+          hasta{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(endDate)}</span>
+        </h2>
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <label>
             Fecha de inicio:
@@ -98,15 +105,6 @@ export default function Table() {
             Actualizar
           </button>
         </div>
-
-        <br />
-
-        <h2 className="text-2xl font-bold text-center mb-5">
-          Reporte desde{" "}
-          <span style={{ color: "#C81F1D" }}>{humanizeDate(startDate)}</span>{" "}
-          hasta{" "}
-          <span style={{ color: "#C81F1D" }}>{humanizeDate(endDate)}</span>
-        </h2>
       </form>
 
       <div className="flex flex-col md:flex-row space-x-4 items-center justify-center">

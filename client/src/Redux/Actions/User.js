@@ -10,7 +10,7 @@ import {
 } from "../Constants/User";
 import { BASE_URL } from "../Constants/BASE_URL";
 
-// user login action
+// User login action to authenticate user
 export const userLoginAction = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQ });
@@ -36,7 +36,7 @@ export const userLoginAction = (email, password) => async (dispatch) => {
   }
 };
 
-//user logout action
+// User logout action
 export const userLogoutAction = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });

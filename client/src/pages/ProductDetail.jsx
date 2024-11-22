@@ -5,6 +5,7 @@ import { productAction } from "../Redux/Actions/Product";
 import { addToCartAction } from "../Redux/Actions/Cart";
 import Layout from "../Layouts/Layouts";
 
+// Component to display product details
 function ProductDetail() {
   const { id } = useParams();
 
@@ -17,7 +18,8 @@ function ProductDetail() {
   }, [dispatch, id]);
 
   const [qty, setQty] = useState(1);
-  const addToCartHandler = () => {
+  // Function to handle adding the product to the cart
+    const addToCartHandler = () => {
     dispatch(addToCartAction(id, qty));
   };
 

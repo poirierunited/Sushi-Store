@@ -3,6 +3,7 @@ import Layout from "../Layouts/Layouts";
 import { useSelector } from "react-redux";
 import Table from "../components/Table";
 
+// Home component
 const Home = () => {
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
   const { userInfo } = userLoginReducer;

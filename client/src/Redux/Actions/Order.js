@@ -17,7 +17,7 @@ import { BASE_URL } from "../Constants/BASE_URL";
 import { CART_ITEM_CLEAR } from "../Constants/Cart";
 import { userLogoutAction } from "./User";
 
-//order action
+// Order action to create a new order
 export const orderAction = (order) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_REQ });
@@ -37,8 +37,7 @@ export const orderAction = (order) => async (dispatch, getState) => {
   }
 };
 
-//order payment
-
+// Order payment action to process payment for an order
 export const orderPaymentAction =
   (orderId, paymentResult) => async (dispatch, getState) => {
     try {
@@ -74,8 +73,7 @@ export const orderPaymentAction =
     }
   };
 
-//detail req
-
+// Order detail action to fetch order details by ID
 export const orderDetailAction = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_DETAIL_REQ });
@@ -88,7 +86,6 @@ export const orderDetailAction = (id) => async (dispatch, getState) => {
     };
     const { data } = await axios.get(
       `${BASE_URL}/api/orders/${id}`,
-
       config
     );
     dispatch({ type: ORDER_DETAIL_REQ_SUCCESS, payload: data });
@@ -108,8 +105,7 @@ export const orderDetailAction = (id) => async (dispatch, getState) => {
   }
 };
 
-// order list action
-
+// Order list action to fetch all orders
 export const orderListAction = () => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_LIST_REQ });

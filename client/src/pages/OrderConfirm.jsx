@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { orderDetailAction } from "../Redux/Actions/Order";
 
+// Order confirmation component
 const OrderConfirmation = () => {
   const { id } = useParams();
   const dispatch = useDispatch();

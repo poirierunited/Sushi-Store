@@ -1,16 +1,18 @@
 "use client";
 
-// import { useState, useEffect } from "react";
 import { Dropdown } from "flowbite-react";
 
+// Function to render the MenuDropdown component
 export function MenuDropdown() {
   return (
     <>
+      {/* Dropdown component from flowbite-react */}
       <Dropdown
         label="☰"
         dismissOnClick={false}
         color="light"
         renderTrigger={() => (
+          // Custom button to trigger the dropdown
           <button
             type="button"
             className="inline-flex items-center p-2 justify-center text-sm text-custom-yellow rounded-lg hover:bg-gray-100 hover:text-yellow-600 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -34,6 +36,7 @@ export function MenuDropdown() {
           </button>
         )}
       >
+        {/* Dropdown items */}
         <a href="#promotions">
           <Dropdown.Item>Promociones</Dropdown.Item>
         </a>

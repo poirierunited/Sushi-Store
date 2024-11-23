@@ -15,10 +15,6 @@ dotenv.config();
 const PORT = process.env.PORT;
 const MONGO_DB = process.env.MONGO_DB;
 
-// connect to mongo db
-// alepoirier16
-// cEKW2K3W4wWNdj2c
-// 186.106.132.181
 mongoose
   .connect(MONGO_DB)
   .then(() => {

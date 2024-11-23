@@ -3,10 +3,13 @@ import { addToCartAction, removeFromCartAction } from "../Redux/Actions/Cart";
 
 export default function CartItem({ cartItems }) {
   const dispatch = useDispatch();
+
+  // Handler to remove item from cart
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCartAction(id));
   };
 
+  // Handler to add item to the cart
   const addToCartHandler = (id, qty) => {
     dispatch(addToCartAction(id, qty));
   };

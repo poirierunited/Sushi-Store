@@ -39,6 +39,9 @@ export function UserDropdown({ logoutHandler, isAdmin }) {
           <Link to="/edit-user">
             <Dropdown.Item>Gestión de usuarios</Dropdown.Item>
           </Link>
+          <Link to="/sell-dashboard">
+            <Dropdown.Item>Gestión de ventas</Dropdown.Item>
+          </Link>
           <Link to="/">
             <Dropdown.Item>Gestión de menú</Dropdown.Item>
           </Link>

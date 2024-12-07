@@ -19,7 +19,7 @@ function ProductDetail() {
 
   const [qty, setQty] = useState(1);
   // Function to handle adding the product to the cart
-    const addToCartHandler = () => {
+  const addToCartHandler = () => {
     dispatch(addToCartAction(id, qty));
   };
 
@@ -37,7 +37,6 @@ function ProductDetail() {
                 <div className="lg:w-4/5 mx-auto flex flex-wrap justify-center items-center">
                   <div className="lg:w-1/4 w-1/3">
                     <div className="aspect-h-2 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
-
                       <img
                         alt="ecommerce"
                         className="h-full w-full object-cover object-center lg:h-full lg:w-full"
@@ -116,7 +115,6 @@ function ProductDetail() {
                     </div>
                     <p className="leading-relaxed">{product.description}</p>
                     <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-
                       {/* si cantidad disponible es 0, no mostrar opción de elegir cantidad */}
 
                       {product.countInStock > 0 ? (

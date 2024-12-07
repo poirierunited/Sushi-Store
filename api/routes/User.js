@@ -105,7 +105,7 @@ userRoute.get(
       });
     } else {
       // Respond with an error if the user is not found
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Usuario no encontrado" });
     }
   })
 );
@@ -131,7 +131,7 @@ userRoute.get(
         createdAt: user.createdAt,
       });
     } else {
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Usuario no encontrado" });
     }
   })
 );
@@ -194,7 +194,24 @@ userRoute.put(
       });
     } else {
       // Respond with an error if the user is not found
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Usuario no encontrado" });
+    }
+  })
+);
+
+// delete user
+userRoute.delete(
+  "/profile/:id",
+  protect,
+  AsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+
+    if (user) {
+      await user.deleteOne();
+      res.json({ message: "Usuario eliminado con éxito" });
+    } else {
+      // Respond with an error if the user is not found
+      res.status(404).json({ message: "Usuario no encontrado" });
     }
   })
 );

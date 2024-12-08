@@ -106,139 +106,178 @@ export default function EditUser() {
     }
   };
 
+  const deleteHandler = async (e) => {
+    if (!userInfo.isAdmin) {
+      alert("No tienes permisos para eliminar este usuario.");
+      return;
+    }
+
+    e.preventDefault();
+
+    if (!window.confirm("¿Estás seguro de eliminar este usuario?")) {
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await axios.delete(`${BASE_URL}/api/users/profile/${id}`, {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      });
+      setLoading(false);
+      alert("Usuario eliminado con éxito.");
+      navigate("/"); // Redirige a la lista de productos
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <form className="max-w-sm mx-auto py-10" onSubmit={submitHandler}>
-          <div className="mb-5">
-            <label htmlFor="id" className="block mb-2 text-sm font-medium">
-              ID del Usuario
-            </label>
-            <input
-              type="text"
-              id="id"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              required
-              className="form-input"
-            />
+        <form className="max-w-lg mx-auto py-10" onSubmit={submitHandler}>
+          <div className="grid grid-cols-3 gap-4 mb-5">
+            <div>
+              <label htmlFor="id" className="block mb-2 text-sm font-medium">
+                ID del Usuario
+              </label>
+              <input
+                type="text"
+                id="id"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="run" className="block mb-2 text-sm font-medium">
+                RUN
+              </label>
+              <input
+                type="text"
+                id="run"
+                value={run}
+                onChange={(e) => setRun(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="name" className="block mb-2 text-sm font-medium">
+                Nombre
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="lastname"
+                className="block mb-2 text-sm font-medium"
+              >
+                Apellido
+              </label>
+              <input
+                type="text"
+                id="lastname"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="region"
+                className="block mb-2 text-sm font-medium"
+              >
+                Región
+              </label>
+              <input
+                type="text"
+                id="region"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="city" className="block mb-2 text-sm font-medium">
+                Ciudad
+              </label>
+              <input
+                type="text"
+                id="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="address"
+                className="block mb-2 text-sm font-medium"
+              >
+                Dirección
+              </label>
+              <input
+                type="text"
+                id="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="phoneNumber"
+                className="block mb-2 text-sm font-medium"
+              >
+                Teléfono
+              </label>
+              <input
+                type="text"
+                id="phoneNumber"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm font-medium">
+                Email
+              </label>
+              <input
+                type="text"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="form-input w-full"
+              />
+            </div>
           </div>
 
-          <div className="mb-5">
-            <label htmlFor="run" className="block mb-2 text-sm font-medium">
-              RUN
-            </label>
-            <input
-              type="text"
-              id="run"
-              value={run}
-              onChange={(e) => setRun(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-
-          <div className="mb-5">
-            <label htmlFor="name" className="block mb-2 text-sm font-medium">
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="lastname"
-              className="block mb-2 text-sm font-medium"
-            >
-              Apellido
-            </label>
-            <input
-              type="text"
-              id="lastname"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label htmlFor="region" className="block mb-2 text-sm font-medium">
-              Región
-            </label>
-            <input
-              type="text"
-              id="region"
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label htmlFor="city" className="block mb-2 text-sm font-medium">
-              Ciudad
-            </label>
-            <input
-              type="text"
-              id="city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label htmlFor="address" className="block mb-2 text-sm font-medium">
-              Dirección
-            </label>
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="phoneNumber"
-              className="block mb-2 text-sm font-medium"
-            >
-              Teléfono
-            </label>
-            <input
-              type="text"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="mb-5">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-
-          {/* Más campos del formulario */}
           <div className="mb-5">
             <label className="block mb-2 text-sm font-medium">Rol</label>
             <div className="flex gap-4">
@@ -266,13 +305,22 @@ export default function EditUser() {
               </label>
             </div>
           </div>
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Actualizar Usuario
+            </button>
+            <button
+              type="button"
+              onClick={deleteHandler}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Eliminar Usuario
+            </button>
+          </div>
 
-          <button
-            type="submit"
-            className="text-white bg-blue-500 px-5 py-2 rounded-lg"
-          >
-            Actualizar Usuario
-          </button>
           {error && <p className="text-red-500 mt-5">{error}</p>}
         </form>
       )}

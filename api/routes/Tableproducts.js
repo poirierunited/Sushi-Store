@@ -9,7 +9,6 @@ tableproductRoute.put(
   "/editProduct/:id",
   protect,
   AsyncHandler(async (req, res) => {
-    
     const isAdmin = req.user.isAdmin;
 
     // If the user is not an admin, log the attempt and return a 403 status
@@ -20,7 +19,7 @@ tableproductRoute.put(
       res.status(403).json({ message: "Not authorized as an admin" });
       return;
     }
-    
+
     const product = await Product.findById(req.params.id);
 
     if (product) {
@@ -30,7 +29,10 @@ tableproductRoute.put(
         product.name = req.body.name;
         updatedFields.name = req.body.name;
       }
-      if (req.body.description && req.body.description !== product.description) {
+      if (
+        req.body.description &&
+        req.body.description !== product.description
+      ) {
         product.description = req.body.description;
         updatedFields.description = req.body.description;
       }
@@ -38,7 +40,10 @@ tableproductRoute.put(
         product.price = req.body.price;
         updatedFields.price = req.body.price;
       }
-      if (req.body.countInStock && req.body.countInStock !== product.countInStock) {
+      if (
+        req.body.hasOwnProperty("countInStock") &&
+        req.body.countInStock !== product.countInStock
+      ) {
         product.countInStock = req.body.countInStock;
         updatedFields.countInStock = req.body.countInStock;
       }
@@ -49,10 +54,9 @@ tableproductRoute.put(
         message: "Producto actualizado con éxito",
         updatedFields,
       });
-
     } else {
       // Respond with an error if the user is not found
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Usuario no encontrado" });
     }
   })
 );
@@ -61,7 +65,6 @@ tableproductRoute.post(
   "/addProduct",
   protect,
   AsyncHandler(async (req, res) => {
-    
     const isAdmin = req.user.isAdmin;
 
     // If the user is not an admin, log the attempt and return a 403 status
@@ -89,7 +92,6 @@ tableproductRoute.post(
       res.status(400).json({ message: "Product already registered" });
       return;
     } else {
-
       const product = await Product.create({
         name: name,
         image: image,
@@ -120,10 +122,9 @@ tableproductRoute.delete(
   "/deleteProduct/:id",
   protect,
   AsyncHandler(async (req, res) => {
-      
     const isAdmin = req.user.isAdmin;
-  
-      // If the user is not an admin, log the attempt and return a 403 status
+
+    // If the user is not an admin, log the attempt and return a 403 status
     if (!isAdmin) {
       console.log(
         "User is not an admin" + isAdmin + " USERID: " + req.user._id
@@ -131,7 +132,7 @@ tableproductRoute.delete(
       res.status(403).json({ message: "Not authorized as an admin" });
       return;
     }
-      
+
     const product = await Product.findById(req.params.id);
 
     if (product) {
@@ -144,4 +145,3 @@ tableproductRoute.delete(
 );
 
 module.exports = tableproductRoute;
-

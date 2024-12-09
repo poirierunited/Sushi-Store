@@ -2,6 +2,7 @@ const express = require("express");
 const protect = require("../middleware/Auth");
 const AsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
+const {sendReceiptToClient} = require("../middleware/emailService");
 
 const orderRoute = express.Router();
 
@@ -88,8 +89,9 @@ orderRoute.put(
       // Respond with the updated order details
 
       // Send email to client
-      sendEmailToClient(order.user.email, "Order Paid", "Your order has been paid successfully.");
+      await sendReceiptToClient(order);
 
+      // Respond with the updated order details
       res.status(200).json(updatedOrder);
     } else {
       // If order is not found, respond with an error message

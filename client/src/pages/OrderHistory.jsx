@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderListAction } from "../Redux/Actions/Order";
 import moment from "moment";
 import { Loading } from "../components/Loading";
+
+// OrderHistory component to display user's order history
 export function OrderHistory() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -67,7 +69,7 @@ export function OrderHistory() {
                         <option value="last 3 months">
                           Los ultimos 3 meses
                         </option>
-                        <option value="lats 6 months">
+                        <option value="last 6 months">
                           Los ultimos 6 meses
                         </option>
                         <option value="this year">Este año</option>
@@ -152,12 +154,6 @@ export function OrderHistory() {
                             >
                               Pedir otra vez
                             </button>
-                            {/* <a
-                            href="#"
-                            className="w-full inline-flex justify-center rounded-lg  border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 lg:w-auto"
-                          >
-                            View details
-                          </a> */}
                           </div>
                         </div>
                       ))}

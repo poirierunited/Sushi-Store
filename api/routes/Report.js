@@ -1,20 +1,22 @@
 const express = require("express");
 const protect = require("../middleware/Auth");
-// const admin = require("../middleware/Admin");
 const AsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
 
 const reportRoute = express.Router();
 
-// Get sales report
+// Retrieve sales report data for a specified date range
 reportRoute.get(
   "/sales",
   protect,
   AsyncHandler(async (req, res) => {
+    // Extract startDate and endDate from query parameters
     const { startDate, endDate } = req.query;
 
+    // Check if the user is an admin
     const isAdmin = req.user.isAdmin;
 
+    // If the user is not an admin, log the attempt and return a 403 status
     if (!isAdmin) {
       console.log(
         "User is not an admin" + isAdmin + " USERID: " + req.user._id
@@ -23,6 +25,7 @@ reportRoute.get(
       return;
     }
 
+    // Create a match object for the date range filter
     const match = {};
     if (startDate && endDate) {
       match.createdAt = {
@@ -31,6 +34,7 @@ reportRoute.get(
       };
     }
 
+    // Aggregate sales report data
     const salesReport = await Order.aggregate([
       { $match: match },
       {
@@ -62,9 +66,11 @@ reportRoute.get(
       },
     ]);
 
+    // If sales report data is found, return it with a 200 status
     if (salesReport.length > 0) {
       res.status(200).json(salesReport[0]);
     } else {
+      // If no sales data is found, return a 404 status
       res.status(404).json({ message: "No sales data found" });
     }
   })

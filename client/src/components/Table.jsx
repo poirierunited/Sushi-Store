@@ -2,44 +2,55 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../Redux/Constants/BASE_URL";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 export default function Table() {
   const [data, setData] = useState(null); // Estado para almacenar los datos de la API
-  const [loading, setLoading] = useState(true); // Estado para el indicador de carga
+  const [loading, setLoading] = useState(false); // Estado para el indicador de carga
   const [error, setError] = useState(null); // Estado para manejar errores
+  const [startDate, setStartDate] = useState("2024-05-01"); // Fecha inicial por defecto
+  const [endDate, setEndDate] = useState("2024-12-01"); // Fecha final por defecto
 
   // Obtener el token desde Redux
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
   const { userInfo } = userLoginReducer;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true); // Activar indicador de carga
-        const response = await axios.get(
-          `${BASE_URL}/api/reports/sales?startDate=2024-05-01&endDate=2024-09-10`,
-          {
-            headers: {
-              Authorization: `Bearer ${userInfo?.token}`,
-            },
-          }
-        );
-        setData(response.data); // Guardar los datos en el estado
-      } catch (err) {
-        console.error("Error al obtener los datos:", err);
-        setError(err.message); // Manejar errores
-      } finally {
-        setLoading(false); // Desactivar indicador de carga
-      }
-    };
+  const fetchData = async (startDate, endDate) => {
+    try {
+      setLoading(true); // Activar indicador de carga
+      setError(null); // Reiniciar errores previos
+      const response = await axios.get(
+        `${BASE_URL}/api/reports/sales?startDate=${startDate}&endDate=${endDate}`,
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo?.token}`,
+          },
+        }
+      );
+      setData(response.data); // Guardar los datos en el estado
+    } catch (err) {
+      console.error("Error al obtener los datos:", err);
+      setError(err.message); // Manejar errores
+    } finally {
+      setLoading(false); // Desactivar indicador de carga
+    }
+  };
 
+  // Llamado inicial con las fechas por defecto
+  useEffect(() => {
     if (userInfo?.token) {
-      fetchData();
+      fetchData(startDate, endDate);
     } else {
       setLoading(false);
       setError("No se encontró un token válido.");
     }
   }, [userInfo]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchData(startDate, endDate); // Actualiza los datos con las fechas seleccionadas
+  };
 
   if (loading) {
     return <div>Cargando datos...</div>;
@@ -53,11 +64,51 @@ export default function Table() {
     return <div>No hay datos para mostrar.</div>;
   }
 
+  const humanizeDate = (dateString) => {
+    const date = new Date(`${dateString}T00:00:00`); // Forzar hora inicial
+    return format(date, "d 'de' MMM, yyyy", { locale: es });
+  };
+
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold text-center mb-5">
-        Reporte diario: inicio-final
-      </h1>
+      <form onSubmit={handleSubmit} className="mb-5 text-center">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+          <label>
+            Fecha de inicio:
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="border border-gray-300 rounded px-2 py-1"
+            />
+          </label>
+          <label>
+            Fecha de fin:
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="border border-gray-300 rounded px-2 py-1"
+            />
+          </label>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Actualizar
+          </button>
+        </div>
+
+        <br />
+
+        <h2 className="text-2xl font-bold text-center mb-5">
+          Reporte desde{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(startDate)}</span>{" "}
+          hasta{" "}
+          <span style={{ color: "#C81F1D" }}>{humanizeDate(endDate)}</span>
+        </h2>
+      </form>
+
       <div className="flex flex-col md:flex-row space-x-4 items-center justify-center">
         {/* Tabla de productos */}
         <div className="relative overflow-x-auto mb-5 md:mb-0 w-full">

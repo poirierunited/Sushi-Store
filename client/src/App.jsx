@@ -13,6 +13,10 @@ import { useSelector } from "react-redux";
 import PlaceOrder from "./pages/PlaceOrder";
 import OrderConfirmation from "./pages/OrderConfirm";
 import { OrderHistory } from "./pages/OrderHistory";
+import EditUser from "./pages/EditUsers";
+import SellDashboard from "./pages/SellDashboard";
+import EditProductPage from "./pages/EditProduct";
+import AddProductPage from "./pages/AddProduct";
 
 function App() {
   const userLoginReducer = useSelector((state) => state.userLoginReducer);
@@ -25,8 +29,24 @@ function App() {
           <Route exact path="/products/:id" element={<ProductDetail />}></Route>
           <Route
             exact
+            path="/editProduct/:id"
+            element={<EditProductPage />}
+          ></Route>
+          <Route exact path="/add-product" element={<AddProductPage />}></Route>
+          <Route
+            exact
             path="/login"
             element={userInfo ? <Navigate to="/"></Navigate> : <Login />}
+          ></Route>
+          <Route
+            exact
+            path="/edit-user"
+            element={<EditUser></EditUser>}
+          ></Route>
+          <Route
+            exact
+            path="/sell-dashboard"
+            element={<SellDashboard />}
           ></Route>
           <Route
             exact

@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 
+// Checkout component to handle the display of the shopping cart and order summary
 export default function Checkout({ open, setOpen }) {
   const cart = useSelector((state) => state.cartReducer);
   const { cartItems } = cart;

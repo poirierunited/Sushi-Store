@@ -9,6 +9,7 @@ import {
   PRODUCT_DETAIL_REQ_FAIL,
 } from "../Constants/Product";
 
+// Product list action to fetch all products
 export const productListAction = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQ });
@@ -27,6 +28,7 @@ export const productListAction = () => async (dispatch) => {
   }
 };
 
+// Product detail action to fetch product details by ID
 export const productAction = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAIL_REQ });

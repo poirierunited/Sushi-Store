@@ -5,21 +5,6 @@ const Footer = () => {
       <footer className="bg-red-600 shadow dark:bg-gray-900 mt-4">
         <div className="w-full max-w-screen-xl mx-auto md:py-8">
           <div className="sm:flex sm:items-center">
-            {/*<a
-              href="/"
-              className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
-            >
-              <img
-                src="public/fukusuke-logo.png"
-                className="w-16 h-16 rounded-full"
-                // TODO!: AGREGAR LOGO
-                alt="Fukusuke Logo"
-              />
-              <span className="self-center text-white text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Fukusuke Sushi
-              </span>
-            </a>*/}
-
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400 justify-center w-full">
               <li>
                 <a className="me-4 md:me-6 text-lg">
@@ -42,11 +27,6 @@ const Footer = () => {
                   <a href="#" className="hover:underline mt-2 ml-1">Nombre calle, Comuna, Ciudad</a>
                 </div>
               </li>
-              {/* <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  Licensing
-                </a>
-              </li> */}
               <li>
                 <a
                   id="contact-section"
@@ -83,7 +63,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          {/*<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />*/}
           <div className="block mt-10 py-1 px-1 bg-yellow-200 shadow-xl border border-gray-300 p-6  rounded-lg"></div>
           <a
             href="/"
@@ -93,7 +72,6 @@ const Footer = () => {
             <img
               src="/fukusuke-logo.png"
               className="w-16 h-16 rounded-full "
-              // TODO!: AGREGAR LOGO
               alt="Fukusuke Logo"
             />
             <span className="self-center text-white text-2xl font-semibold whitespace-nowrap dark:text-white">

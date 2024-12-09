@@ -8,6 +8,7 @@ const userRoute = require("./routes/User");
 const productRoute = require("./routes/Product");
 const orderRoute = require("./routes/Order");
 const reportRoute = require("./routes/Report");
+const tableproductRoute = require("./routes/Tableproducts");
 
 const app = express();
 
@@ -15,10 +16,6 @@ dotenv.config();
 const PORT = process.env.PORT;
 const MONGO_DB = process.env.MONGO_DB;
 
-// connect to mongo db
-// alepoirier16
-// cEKW2K3W4wWNdj2c
-// 186.106.132.181
 mongoose
   .connect(MONGO_DB)
   .then(() => {
@@ -45,6 +42,8 @@ app.use("/api/orders", orderRoute);
 
 // report route
 app.use("/api/reports", reportRoute);
+
+app.use("/api/tableproduct", tableproductRoute);
 
 // paypal payment api for client key;
 app.use("/api/config/paypal", (req, res) => {

@@ -11,11 +11,10 @@ import { saveShippingAddressAction } from "../Redux/Actions/Cart";
 import { ORDER_RESET } from "../Redux/Constants/Order";
 import { useNavigate } from "react-router-dom";
 
+// PlaceOrder component handles the order placement and payment process
 export default function PlaceOrder() {
   const cart = useSelector((state) => state.cartReducer);
   const { cartItems, shippingAddress } = cart;
-
-  //end
 
   // subtotal - no se incluye los impuestos ni el envio
   const addDecimal = (num) => {
@@ -26,13 +25,10 @@ export default function PlaceOrder() {
     cartItems.reduce((total, item) => total + item.qty * item.price, 0)
   );
 
-  //   opcion de incluir impuestos
-  //   const taxPrice = addDecimal(Number(0.15 * subtotal).toFixed(0));
   const shippingPrice = addDecimal(subtotal > 100 ? 0 : 20);
   //total
   const total = (
     Number(subtotal) +
-    // Number(taxPrice) +
     Number(shippingPrice)
   ).toFixed(0);
 
@@ -45,7 +41,7 @@ export default function PlaceOrder() {
 
   const [clientId, setClientId] = useState(null);
 
-  //added for order confirm
+  // State and variables for handling order confirmation and payment
 
   const orderReducer = useSelector((state) => state.orderReducer);
   const { order, success } = orderReducer;
@@ -56,7 +52,7 @@ export default function PlaceOrder() {
   useEffect(() => {
     getPaypalClientID();
 
-    //add for order confirm , payment success
+    // Check if the order was successful and handle payment confirmation
 
     if (success) {
       dispatch({ type: ORDER_RESET });
@@ -241,13 +237,6 @@ export default function PlaceOrder() {
                     />
                   </PayPalScriptProvider>
                 )}
-
-                {/* <PayPalScriptProvider options={{ clientId: "test" }}>
-                  <PayPalButtons
-                  // createOrder={createOrder}
-                  // onApprove={onApprove}
-                  />
-                </PayPalScriptProvider> */}
               </div>
             </div>
           </div>

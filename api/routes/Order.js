@@ -2,6 +2,7 @@ const express = require("express");
 const protect = require("../middleware/Auth");
 const AsyncHandler = require("express-async-handler");
 const Order = require("../models/Order");
+const {sendReceiptToClient} = require("../middleware/emailService");
 
 const orderRoute = express.Router();
 
@@ -85,6 +86,11 @@ orderRoute.put(
 
       // Save the updated order to the database
       const updatedOrder = await order.save();
+      // Respond with the updated order details
+
+      // Send email to client
+      await sendReceiptToClient(order);
+
       // Respond with the updated order details
       res.status(200).json(updatedOrder);
     } else {
